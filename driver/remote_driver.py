@@ -20,6 +20,8 @@ browser = webdriver.Remote(service.service_url, capabilities)
 browser.delete_all_cookies()
 browser.get('https://login.taobao.com')
 
+browser.maximize_window()
+
 mouse = PyMouse()
 print mouse.position()
 
@@ -29,7 +31,11 @@ print mouse.position()
 # element = wait.until(EC.element_to_be_clickable((By.ID,'J_SubmitStatic')))
 
 
-# ele_input_name = browser.find_element_by_id('TPL_username_1')
+ele_input_name = browser.find_element_by_id('TPL_username_1')
+x = ele_input_name.location['x']
+y = ele_input_name.location['y']
+
+mouse.move(x, y)
 # ActionChains(browser).move_to_element(ele_input_name).perform()
 # ele_input_name.send_keys('15313349378')
 # time.sleep(2)
